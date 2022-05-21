@@ -46,11 +46,4 @@ format++;
 _putchar(-2);
 return (record);
 }
-int main (int argc, char *argv[])
-{
-  int j = 0;
-  printf("Enter character and string\n");
-  j = _printf("%c %s \n",'A', "Hello ATHman");
-  printf("%d\n", j);
-  return 0;
-}
+
