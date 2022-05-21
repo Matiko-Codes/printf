@@ -80,3 +80,11 @@ i++;
 va_end(list);
 return (len);
 }
+int main ()
+{
+  int j = 0;
+  printf("Enter character and string\n");
+  j = _printf("%c %s \n",'A', "Hello ATHman");
+  printf("%d\n", j);
+  return 0;
+}
