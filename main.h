@@ -27,6 +27,7 @@ int print_hexa(va_list x);
 int print_HEXA(va_list X);
 int print_oct(va_list o);
 int print_binary(va_list b);
+int print_bin(va_list b);
 int print_unsigned(va_list u);
 int print_rot13(va_list R);
 int print_reverse(va_list r);
