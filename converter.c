@@ -10,16 +10,16 @@ char *convert(unsigned long int num, int base, int lowercase)
 {
 static char *rep;
 static char buffer[50];
-char *pt;
+char *ptr;
 rep = (lowercase)
 ? "0123456789abcdef"
 : "0123456789ABCDEF";
-pt = &buffer[49];
-*pt = '\0';
+ptr = &buffer[49];
+*ptr = '\0';
 do
 {
-*--pt = rep[num % base];
+*--ptr = rep[num % base];
 num /= base;
 } while (num != 0);
-return (pt);
+return (ptr);
 }
