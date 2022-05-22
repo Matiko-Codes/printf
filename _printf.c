@@ -4,7 +4,7 @@ int _printf(const char *format, ...)
 int (*pfunc)(va_list, flag_t *);
 const char *p;
 va_list arguments;
-flags_t flags = {0, 0, 0};
+flag_t flags = {0, 0, 0};
 register int count = 0;
 va_start(arguments, format);
 if (!format || (format[0] == '%' && !format[1]))
@@ -21,9 +21,9 @@ if (*p == '%')
 count += _putchar('%');
 continue;
 }
-while (get_flag(*p, &flags))
+while (get_flags(*p, &flags))
 p++;
-pfunc = get_print(*p);
+pfunc = get_printf(*p);
 count += (pfunc)
 ? pfunc(arguments, &flags)
 : _printf("%%%c", *p);

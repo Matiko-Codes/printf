@@ -55,7 +55,7 @@ int print_rot13(va_list l, flag_t *p);
 int print_reverse(va_list l, flag_t *p);
 int print_S(va_list l, flag_t *p);
 /* print_address */
-int print_address(va_list l, flag_t *p;
+int print_address(va_list l, flag_t *p);
 /* print_percent */
 int print_percent(va_list l, flag_t *p);
 
