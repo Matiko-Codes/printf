@@ -1,39 +1,37 @@
 #include "main.h"
-
-/**
- * find_correct_func - finding the format for _printf
- * @format: format
- * Return: NULL
- */
-
 int _printf(const char *format, ...)
 {
-	int printed_chars;
-	conver_t f_list[] = {
-		{"%", print_percent},
-		{"d", print_integer},
-		{"i", print_integer},
-		{"c", print_char},
-		{"s", print_string},
-		{"b", print_binary},
-		{"u", print_unsigned_integer},
-		{"o", print_octal},
-		{"x", print_hex},
-		{"X", print_HEX},
-		{"S", print_String},
-		{"p", print_pointer},
-		{"r", print_rev},
-		{"R", print_rot13},
-		{NULL, NULL},
-	};
-	va_list arg_list;
-
-	if (format == NULL)
-		return (-1);
-
-	va_start(arg_list, format);
-	printed_chars = format_reciever(format, f_list, arg_list);
-	va_end(arg_list);
-	return (printed_chars);
+int (*pfunc)(va_list, flag_t *);
+const char *p;
+va_list arguments;
+flags_t flags = {0, 0, 0};
+register int count = 0;
+va_start(arguments, format);
+if (!format || (format[0] == '%' && !format[1]))
+return (-1);
+if (format[0] == '%' && format[1] == ' ' && !format[2])
+return (-1);
+for (p = format; *p; p++)
+{
+if (*p == '%')
+{
+p++;
+if (*p == '%')
+{
+count += _putchar('%');
+continue;
 }
-
+while (get_flag(*p, &flags))
+p++;
+pfunc = get_print(*p);
+count += (pfunc)
+? pfunc(arguments, &flags)
+: _printf("%%%c", *p);
+}
+else
+count += _putchar(*p);
+}
+_putchar(-1);
+va_end(arguments);
+return (count);
+}
