@@ -95,7 +95,7 @@ return (cont);
  *Description: This function call function manager
  *Return: num of characteres printed
  */
-int call_function_manager(char aux, va_list arg)
+int call_func_manager(char aux, va_list arg)
 {
 int cont = 0;
 cont = func_manager(aux, arg);
